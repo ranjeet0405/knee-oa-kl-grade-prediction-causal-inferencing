@@ -1,0 +1,9 @@
+# PyTorch (CUDA build) is already installed in venv - do not reinstall it here.
+# Install the rest with:  pip install -r requirements.txt
+segmentation-models-pytorch
+albumentations
+opencv-python
+scikit-learn
+pandas
+matplotlib
+scipy

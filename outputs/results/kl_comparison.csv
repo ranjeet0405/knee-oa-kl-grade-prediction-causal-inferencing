@@ -1,0 +1,4 @@
+Run,Accuracy,QWK,Macro F1,Recall KL3,Recall KL4
+kl_baseline,0.6284,0.8246,0.6746,0.7713,0.9
+kl_unet,0.6544,0.813,0.6714,0.7309,0.86
+kl_unetpp,0.6508,0.8144,0.6542,0.7623,0.9

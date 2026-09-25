@@ -1,0 +1,26 @@
+﻿Device: cuda | Run: kl_unetpp
+Train: 5778 | Val: 826
+Train counts per grade: [2286, 1046, 1516, 757, 173]
+Class weights: [0.51, 1.1, 0.76, 1.53, 6.68]
+Epoch 1/25 | loss: 1.2162 | val acc: 0.6041 | val QWK: 0.6833 | 139s
+  -> new best, saved
+Epoch 2/25 | loss: 0.8736 | val acc: 0.5811 | val QWK: 0.7739 | 109s
+  -> new best, saved
+Epoch 3/25 | loss: 0.8043 | val acc: 0.5387 | val QWK: 0.7380 | 111s
+Epoch 4/25 | loss: 0.7318 | val acc: 0.6005 | val QWK: 0.7524 | 113s
+Epoch 5/25 | loss: 0.6962 | val acc: 0.6247 | val QWK: 0.7802 | 112s
+  -> new best, saved
+Epoch 6/25 | loss: 0.6525 | val acc: 0.6029 | val QWK: 0.7805 | 112s
+  -> new best, saved
+Epoch 7/25 | loss: 0.6161 | val acc: 0.6029 | val QWK: 0.7617 | 117s
+Epoch 8/25 | loss: 0.5727 | val acc: 0.6453 | val QWK: 0.7927 | 114s
+  -> new best, saved
+Epoch 9/25 | loss: 0.5550 | val acc: 0.6017 | val QWK: 0.7734 | 115s
+Epoch 10/25 | loss: 0.5117 | val acc: 0.6271 | val QWK: 0.7869 | 112s
+Epoch 11/25 | loss: 0.4744 | val acc: 0.6102 | val QWK: 0.7815 | 112s
+Epoch 12/25 | loss: 0.4348 | val acc: 0.6247 | val QWK: 0.7785 | 112s
+Epoch 13/25 | loss: 0.4043 | val acc: 0.6138 | val QWK: 0.7666 | 112s
+Epoch 14/25 | loss: 0.3507 | val acc: 0.6429 | val QWK: 0.7861 | 112s
+No improvement for 6 epochs, stopping early.
+Done. Best val QWK: 0.7927
+Checkpoint: outputs/checkpoints\kl_unetpp_best.pt
