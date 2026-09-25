@@ -1,2 +1,6 @@
 outputs/checkpoints/unet_best.pt filter=lfs diff=lfs merge=lfs -text
 outputs/checkpoints/unetpp_best.pt filter=lfs diff=lfs merge=lfs -text
+
+# Kept as a record only; exclude from GitHub's language stats (byte count is
+# dominated by embedded cell outputs, not actual code)
+notebooks/*.ipynb linguist-vendored
