@@ -1,0 +1,2 @@
+outputs/checkpoints/unet_best.pt filter=lfs diff=lfs merge=lfs -text
+outputs/checkpoints/unetpp_best.pt filter=lfs diff=lfs merge=lfs -text

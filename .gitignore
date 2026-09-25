@@ -3,17 +3,13 @@ venv/
 __pycache__/
 *.pyc
 
-# Large / restricted datasets - not ours to redistribute, and some exceed GitHub's file size limit
+# Large / restricted raw datasets - get separately (see README), not pushed here
 unified_oai_dataset.csv
 dataset/
 segmentation_data/
-data/*.csv
 
 # Regenerated locally, not needed in git
 clone_log.txt
-
-# Large trained model checkpoints (93MB / 100MB) - add via Git LFS later if needed
-outputs/checkpoints/*.pt
 
 # Local prediction test outputs
 outputs/predictions/
