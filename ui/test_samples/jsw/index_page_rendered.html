@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knee OA Assessment — Reading Room</title>
+<link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body>
+
+<div class="bg-scene" aria-hidden="true">
+  <svg class="knee-svg" viewBox="0 0 260 960" xmlns="http://www.w3.org/2000/svg">
+    <path class="bone-a" pathLength="1" d="M130 10 C95 10 80 40 85 75 C90 130 100 220 95 320 C92 380 70 420 55 460 C40 500 45 540 75 560 C95 573 110 560 112 535 C114 560 130 575 150 562 C178 545 182 505 165 465 C148 425 158 380 160 320 C165 220 172 130 175 75 C180 40 165 10 130 10 Z"/>
+    <path class="bone-b" pathLength="1" d="M110 640 C90 625 85 600 95 580 C100 565 108 558 118 556 C122 568 135 568 139 556 C150 558 158 565 163 580 C173 600 168 625 148 640 C160 680 165 760 160 850 C158 900 150 930 140 945 C134 952 124 952 118 945 C108 930 100 900 98 850 C93 760 98 680 110 640 Z"/>
+  </svg>
+  <div class="scan-sweep"></div>
+</div>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M18 4c-3 0-5 2-5 5 0 3 1 7 0 11-1 3-4 5-4 9 0 2.5 2 4.5 4.5 4.5 2 0 3-1.5 3.2-3.4.2 2 1.8 3.4 3.8 2.6 2.5-1 3-4 1.8-6.7-1-2.4-.3-5 0-8.5.3-3.7-1.3-6.8-3.5-9-.2-2.2-.3-4.5 0-4.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M17.8 26.6c-.4 3.3.6 6 .1 9-.4 2.6-2.4 4-2.4 6.9 0 2.5 2 4.5 4.5 4.5 2.2 0 3.3-1.8 3.2-3.9.3 2 2 3.4 4 2.6 2.4-1 2.9-3.9 1.7-6.5-1-2.2-.2-4.7.1-7.8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <div><b>Knee OA Reading Room</b><small>AI-assisted KL-grade assessment</small></div>
+    </div>
+    <div class="side-label">WORKSPACE</div>
+    <nav>
+      <button class="nav active" data-view="analysis" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        New assessment
+      </button>
+      <button class="nav" data-view="causal" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg>
+        Causal insights
+      </button>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.5A9 9 0 1 1 11.5 3a7 7 0 0 0 9.5 9.5Z"/></svg>
+      <svg class="icon-sun hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+      <span id="theme-toggle-label">Dark mode</span>
+    </button>
+    <div class="sidebar-bottom">
+      <div class="secure-dot"></div>
+      <div><b style="font-size:11px">Research prototype — not for clinical use.</b><small>No patient records are stored on this server.</small></div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><div class="eyebrow">RESEARCH PROTOTYPE</div><h1>Knee Osteoarthritis Assessment</h1></div>
+      <div class="topbar-actions"><span class="pill warn">Research prototype — not for clinical use.</span></div>
+    </header>
+
+    <!-- ========== VIEW: ANALYSIS ========== -->
+    <section class="view" id="view-analysis">
+      <div class="welcome">
+        <div><h2>New assessment</h2><p>Upload a knee X-ray. The final model reads the image only; anything you add below (age, BMI, family history) is used solely for the causal risk panel, never for the grade.</p></div>
+      </div>
+
+      <div class="card patient-card">
+        <div class="section-head">
+          <div><h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+            Patient details (optional)
+          </h3><p>Only feeds the causal risk panel below — never the classifier</p></div>
+        </div>
+        <div class="form-grid">
+          <label for="age">Age (years)<input id="age" type="number" min="1" max="120" placeholder="e.g. 65"></label>
+          <label for="bmi">BMI (kg/m&sup2;)<input id="bmi" type="number" min="5" max="80" step=".1" placeholder="e.g. 32.0"></label>
+          <label for="family_history">Family history of knee replacement<select id="family_history"><option value="">Not given</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+          <label for="knee_side">Knee side (optional)<select id="knee_side"><option value="">Not given</option><option value="L">Left</option><option value="R">Right</option></select></label>
+        </div>
+        <p class="hint">Knee side is only used to label the joint-space-width panel's compartments Medial/Lateral below - it is never fed to the classifier.</p>
+        <p class="hint">Age/BMI outside the studied population (45&ndash;79 / 16.9&ndash;48.7) is refused by the causal panel, not extrapolated.</p>
+        <div class="demo-row" id="demo-row" role="group" aria-label="Try a sample X-ray">
+          <span class="hint" style="align-self:center">Try a sample X-ray:</span>
+        </div>
+      </div>
+
+      <div class="clinical-grid">
+        <div class="card">
+          <div class="section-head">
+            <div><h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+              Knee X-ray
+            </h3><p>Drag and drop, or click to browse</p></div>
+            <span class="tag">PNG / JPG</span>
+          </div>
+          <label class="dropzone" for="xray-input" id="dropzone">
+            <div class="upload-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg></div>
+            <b>Upload knee X-ray</b><span>Drop an image here, or click to choose a file</span>
+            <input type="file" id="xray-input" accept="image/png,image/jpeg,.jpg,.jpeg" aria-label="Upload knee X-ray image">
+          </label>
+          <div class="lightbox hidden" id="image-view">
+            <img id="xray-preview" alt="Selected knee X-ray preview">
+            <div class="lightbox-toolbar"><span id="image-name">Image selected</span><button class="text-btn" id="remove-image" type="button">Remove</button></div>
+          </div>
+          <div class="empty-image" id="empty-image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M3 9h5M3 15h5"/></svg>
+            <span>No X-ray selected</span>
+          </div>
+          <ul class="progress-list hidden" id="progress-list" aria-live="polite"></ul>
+        </div>
+
+        <div class="card prediction-card">
+          <div class="section-head">
+            <div><h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg>
+              KL grade result
+            </h3><p id="model-line-hint">Final model: ensemble of ConvNeXt (kl_final) and KneeNeXt</p></div>
+            <span class="tag muted" id="model-used-tag">NOT RUN</span>
+          </div>
+          <div class="prediction-empty" id="prediction-panel">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg>
+            <b>Awaiting assessment</b><p>Upload an X-ray and run the model to see the KL grade here.</p>
+          </div>
+          <button class="btn primary full" id="analyze-btn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l14 9-14 9V3z"/></svg>
+            Run assessment
+          </button>
+          <p class="hint center" id="analysis-status">No prediction has been made.</p>
+        </div>
+      </div>
+
+      <div class="clinical-grid lower-grid">
+        <div class="card">
+          <div class="section-head"><div><h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            Explainability
+          </h3><p>Which regions most influenced the result</p></div></div>
+          <div id="xai-panel"><div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/></svg>
+            <h3>No explanation yet</h3><p>Run an assessment first.</p>
+          </div></div>
+        </div>
+        <div class="card">
+          <div class="section-head"><div><h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+            Similar training cases
+          </h3><p>3 nearest neighbors by image similarity</p></div></div>
+          <div id="similar-cases-panel"><div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            <h3>No cases yet</h3><p>Run an assessment first.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="clinical-grid lower-grid">
+        <div class="card">
+          <div class="section-head"><div><h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg>
+            Causal risk panel
+          </h3><p>Population and (if age/BMI given) individual estimates</p></div></div>
+          <div id="causal-panel-result"><div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V5M4 19h16"/></svg>
+            <h3>No causal estimate yet</h3><p>Run an assessment first.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="clinical-grid lower-grid">
+        <div class="card">
+          <div class="section-head">
+            <div><h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v16M20 4v16M4 10h16M4 14h16"/></svg>
+              Joint space width
+            </h3><p>Image-processing measurement, separate from the KL grade</p></div>
+            <span class="tag muted" id="jsw-status-badge">NOT RUN</span>
+          </div>
+          <div id="jsw-panel"><div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16M20 4v16"/></svg>
+            <h3>No measurement yet</h3><p>Run an assessment first.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn secondary" id="download-report-btn" type="button" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download report
+        </button>
+      </div>
+
+      <div class="disclaimer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M12 11v5"/></svg>
+        <span><b>Research prototype — not for clinical use.</b> This tool does not diagnose or recommend treatment.</span>
+      </div>
+    </section>
+
+    <!-- ========== VIEW: CAUSAL INSIGHTS ========== -->
+    <section class="view hidden" id="view-causal">
+      <div class="welcome">
+        <div><h2>Causal insights</h2><p>Population-level findings from this project's causal analysis, read from the existing results files — nothing shown here is computed on the fly.</p></div>
+      </div>
+
+      <div class="card">
+        <div class="section-head"><div><h3>Obesity &rarr; KL grade</h3><p>One knee per patient, n&nbsp;=&nbsp;4,071, adjusted for age and family history</p></div></div>
+        <div class="method-cards" id="causal-methods"></div>
+        <div class="ci-bar-row" style="margin-top:18px" id="ci-bars"></div>
+        <div class="small-warning">Observational estimates under this project's causal-graph assumptions — not proof of any individual patient's cause of osteoarthritis.</div>
+      </div>
+
+      <div class="clinical-grid lower-grid" style="margin-top:16px">
+        <figure class="card figure-card">
+          <div class="section-head"><div><h3>BMI dose&ndash;response</h3><p>Expected KL grade across the observed BMI range</p></div></div>
+          <img src="/static/images/bmi_dose_response.png" alt="Line chart showing expected KL grade rising roughly linearly as BMI increases, with a shaded 95% confidence band" loading="lazy">
+          <figcaption>Roughly linear across the observed range (16.9&ndash;48.7), with a 95% confidence band.</figcaption>
+        </figure>
+        <figure class="card figure-card">
+          <div class="section-head"><div><h3>Obesity effect</h3><p>Point estimate and confidence interval</p></div></div>
+          <img src="/static/images/obesity_effect.png" alt="Chart showing the obesity effect on KL grade with its confidence interval" loading="lazy">
+          <figcaption>Linear regression and propensity-score matching agree on the direction and rough size of the effect.</figcaption>
+        </figure>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <div class="section-head"><div><h3>Robustness</h3><p>Sensitivity to an unmeasured confounder, and a second cause</p></div></div>
+        <div class="method-cards" id="causal-robustness"></div>
+      </div>
+    </section>
+
+    <footer>Local research prototype &middot; No patient database &middot; Research prototype — not for clinical use.</footer>
+  </main>
+</div>
+
+<div class="modal hidden" id="zoom-modal" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button class="modal-close" id="modal-close" type="button" aria-label="Close enlarged image">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <img id="modal-img" src="" alt="Enlarged view">
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

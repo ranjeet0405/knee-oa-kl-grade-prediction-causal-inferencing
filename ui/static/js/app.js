@@ -165,6 +165,8 @@ function resetResults() {
   $("download-report-btn")?.setAttribute("disabled", "true");
   $("progress-list")?.classList.add("hidden");
   if ($("progress-list")) $("progress-list").innerHTML = "";
+  const jswBadge = $("jsw-status-badge");
+  if (jswBadge) { jswBadge.textContent = "NOT RUN"; jswBadge.className = "tag muted"; }
 }
 
 /* ========================= Grade reference data ========================= */
@@ -481,6 +483,80 @@ function renderCausalPanel(panel, baseAge, baseFamilyHistory) {
   el.appendChild(caveat);
 }
 
+/* ========================= Rendering: joint space width panel ========================= */
+function renderJsw(data) {
+  const el = $("jsw-panel");
+  const badge = $("jsw-status-badge");
+  if (!el) return;
+  el.replaceChildren();
+
+  if (badge) {
+    const rho = data.status_rho;
+    const rhoText = typeof rho === "number" ? `ρ = ${rho.toFixed(3)}` : "ρ unavailable";
+    if (data.status === "validated") {
+      badge.textContent = `Validated (${rhoText})`;
+      badge.className = "jsw-badge validated";
+    } else {
+      badge.textContent = `Experimental — not validated (${rhoText})`;
+      badge.className = "jsw-badge experimental";
+    }
+  }
+
+  const toggleRow = document.createElement("div");
+  toggleRow.className = "jsw-toggle-row";
+  toggleRow.innerHTML = `<input type="checkbox" id="jsw-lines-toggle" checked><label for="jsw-lines-toggle">Show measurement lines</label>`;
+  el.appendChild(toggleRow);
+
+  const imgWrap = document.createElement("div");
+  imgWrap.className = "jsw-image-wrap";
+  const overlaySrc = data.overlay_png_base64 ? `data:image/png;base64,${data.overlay_png_base64}` : null;
+  const baseSrc = data.base_png_base64 ? `data:image/png;base64,${data.base_png_base64}` : null;
+  const img = document.createElement("img");
+  img.src = overlaySrc || baseSrc || "";
+  img.alt = "Knee X-ray with the joint line and measured femur/tibia edges drawn on it";
+  img.addEventListener("click", () => openZoom(img.src, img.alt));
+  imgWrap.appendChild(img);
+  el.appendChild(imgWrap);
+
+  toggleRow.querySelector("input").addEventListener("change", (e) => {
+    img.src = e.target.checked ? (overlaySrc || baseSrc) : (baseSrc || overlaySrc);
+  });
+
+  const compartments = data.compartments || [];
+  const compGrid = document.createElement("div");
+  compGrid.className = "jsw-compartments";
+  compartments.forEach((c) => {
+    const card = document.createElement("div");
+    card.className = "jsw-comp-card";
+    card.innerHTML = c.failed
+      ? `<h5>${c.label}</h5><p class="fail-msg">${c.message}</p>`
+      : `<h5>${c.label}</h5><div class="val">${c.min_jsw.toFixed(3)}<small>min</small></div><div class="val">${c.mean_jsw.toFixed(3)}<small>mean</small></div>`;
+    compGrid.appendChild(card);
+  });
+  el.appendChild(compGrid);
+
+  if (compartments.length === 2 && !compartments[0].failed && !compartments[1].failed) {
+    const compare = document.createElement("div");
+    compare.className = "jsw-compare";
+    const [a, b] = compartments;
+    const scale = Math.max(a.min_jsw, b.min_jsw, 0.01);
+    compare.innerHTML = `
+      <div class="jsw-compare-row"><span>${a.label}</span><div class="jsw-compare-track"><div class="jsw-compare-fill medial" style="width:0"></div></div></div>
+      <div class="jsw-compare-row"><span>${b.label}</span><div class="jsw-compare-track"><div class="jsw-compare-fill lateral" style="width:0"></div></div></div>`;
+    el.appendChild(compare);
+    requestAnimationFrame(() => {
+      const fills = compare.querySelectorAll(".jsw-compare-fill");
+      if (fills[0]) fills[0].style.width = `${(a.min_jsw / scale) * 100}%`;
+      if (fills[1]) fills[1].style.width = `${(b.min_jsw / scale) * 100}%`;
+    });
+  }
+
+  const notes = document.createElement("div");
+  notes.className = "small-warning";
+  notes.innerHTML = `${data.note_units}<br>${data.note_not_kl}`;
+  el.appendChild(notes);
+}
+
 /* ========================= Run assessment ========================= */
 $("analyze-btn")?.addEventListener("click", async () => {
   if (!selectedFile) { toast("Select an X-ray first."); return; }
@@ -495,6 +571,13 @@ $("analyze-btn")?.addEventListener("click", async () => {
   const age = $("age")?.value; if (age) formData.append("age", age);
   const bmi = $("bmi")?.value; if (bmi) formData.append("bmi", bmi);
   const fh = $("family_history")?.value; if (fh) formData.append("family_history", fh);
+  const kneeSide = $("knee_side")?.value;
+
+  const jswForm = new FormData();
+  jswForm.append("xray", selectedFile);
+  if (kneeSide) jswForm.append("side", kneeSide);
+  const jswPromise = fetch("/api/jsw", { method: "POST", body: jswForm, cache: "no-store" })
+    .then((r) => r.json()).catch(() => ({ ok: false }));
 
   try {
     const response = await fetch("/api/analyze", { method: "POST", body: formData, cache: "no-store" });
@@ -510,6 +593,13 @@ $("analyze-btn")?.addEventListener("click", async () => {
     window.__lastResult = data;
     if ($("analysis-status")) $("analysis-status").textContent = `Done. ${data.disclaimer}`;
     toast("Assessment completed.");
+
+    jswPromise.then((jswData) => {
+      if (jswData && jswData.ok) {
+        renderJsw(jswData);
+        window.__lastJsw = jswData;
+      }
+    });
   } catch (error) {
     progress.finish(false);
     if ($("analysis-status")) $("analysis-status").textContent = error.message || "Assessment failed.";

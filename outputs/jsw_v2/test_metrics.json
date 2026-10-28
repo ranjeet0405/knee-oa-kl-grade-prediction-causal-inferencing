@@ -1,0 +1,22 @@
+{
+  "n_images": 1655,
+  "medial_min_jsw_vs_jsn_medial": {
+    "rho": -0.30179097240630715,
+    "n": 1638
+  },
+  "medial_min_jsw_vs_kl_grade": {
+    "rho": -0.25865970538724864,
+    "n": 1639
+  },
+  "lateral_min_jsw_vs_jsn_lateral": {
+    "rho": -0.2736415268578999,
+    "n": 1638
+  },
+  "lateral_min_jsw_vs_kl_grade": {
+    "rho": -0.27032893943274067,
+    "n": 1638
+  },
+  "medial_fail_rate": 0.009667673716012085,
+  "lateral_fail_rate": 0.01027190332326284,
+  "pass": true
+}

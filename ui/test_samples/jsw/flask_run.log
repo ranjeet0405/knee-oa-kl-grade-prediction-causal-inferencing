@@ -1,0 +1,56 @@
+﻿=======================================================
+Knee OA KL-grade research webapp (ui/)
+Project root: C:\Users\Ranjeet\Desktop\knee_oa_project
+Disclaimer: Research prototype — not for clinical use.
+=======================================================
+ * Serving Flask app 'app'
+ * Debug mode: off
+.\venv\Scripts\python.exe : WARNING: This is a development server. Do not use it in a production deployment. Use a 
+production WSGI server instead.
+At line:2 char:1
++ .\venv\Scripts\python.exe ui\app.py *> ui\test_samples\jsw\flask_run. ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (WARNING: This i...server instead.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ * Running on http://127.0.0.1:5050
+Press CTRL+C to quit
+127.0.0.1 - - [28/Oct/2026 23:01:03] "GET /api/health HTTP/1.1" 200 -
+sys:1: UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no 
+inputs require gradients. See 
+https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.nn.Module.register_full_backward_hook for more 
+details.
+127.0.0.1 - - [28/Oct/2026 23:02:03] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:03] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:09] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:09] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:14] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:14] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:20] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:20] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:26] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:26] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:59] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:02:59] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:05] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:05] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:11] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:11] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:17] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:17] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:24] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:24] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:53] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:53] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:59] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:03:59] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:05] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:05] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:11] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:11] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:17] "POST /api/analyze HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:17] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:49] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:49] "POST /api/jsw HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2026 23:04:49] "POST /api/jsw HTTP/1.1" 200 -

@@ -36,6 +36,9 @@ from ui.model_bridge import analyze, DISCLAIMER
 # Reused directly for the redesign's live BMI what-if slider - same existing causal module
 # model_bridge itself imports from, not a reimplementation. model_bridge.py is unchanged.
 from causal_model import load_or_fit_causal_models, out_of_range_messages, expected_kl, contribution_bmi
+# New JSW panel - goes through ui/jsw_bridge.py only; measure_jsw.py and model_bridge.py are
+# both untouched, and this never feeds into or changes the KL grade.
+from ui.jsw_bridge import measure as jsw_measure
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 MAX_IMAGE_BYTES = 12 * 1024 * 1024
@@ -93,6 +96,37 @@ def _attach_case_thumbnails(result):
                 case["thumbnail_png_base64"] = base64.b64encode(buf.tobytes()).decode("utf-8")
         except Exception:
             continue
+
+
+@app.post("/api/jsw")
+def run_jsw():
+    """Joint space width panel - entirely separate from /api/analyze. Calls
+    ui/jsw_bridge.measure() only; never touches the classifier and never changes the KL
+    grade. side: "L"/"R"/omitted - an optional hint for medial/lateral labeling only."""
+    if "xray" not in request.files or not request.files["xray"].filename:
+        return jsonify({"ok": False, "message": "Select a knee X-ray first."}), 400
+    file = request.files["xray"]
+    if not allowed_file(file.filename):
+        return jsonify({"ok": False, "message": "Only PNG, JPG and JPEG images are supported."}), 400
+
+    side = request.form.get("side")
+    side = side if side in ("L", "R") else None
+
+    tmp_path = None
+    try:
+        suffix = "." + file.filename.rsplit(".", 1)[1].lower()
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+            file.save(tmp.name)
+            tmp_path = tmp.name
+        result = jsw_measure(tmp_path, side=side)
+        result["ok"] = True
+        return jsonify(result)
+    except Exception:
+        app.logger.error("JSW measurement failed:\n%s", traceback.format_exc())
+        return jsonify({"ok": False, "message": "JSW measurement failed. Check the Flask terminal for details."}), 500
+    finally:
+        if tmp_path and os.path.exists(tmp_path):
+            os.remove(tmp_path)
 
 
 @app.get("/")

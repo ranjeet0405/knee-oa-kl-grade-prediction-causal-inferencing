@@ -1,0 +1,33 @@
+﻿.\venv\Scripts\python.exe : 
+C:\Users\Ranjeet\Desktop\knee_oa_project\venv\Lib\site-packages\albumentations\check_version.py:147: UserWarning: 
+Error fetching version info <urlopen error _ssl.c:993: The handshake operation timed out>
+At line:1 char:349
++ ... a_project"; .\venv\Scripts\python.exe scripts\measure_jsw_v2.py --mod ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Ranjee...tion timed out>:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  data = fetch_version_info()
+Running the chosen config on the FULL val split (826 images).
+{
+  "n_images": 826,
+  "medial_min_jsw_vs_jsn_medial": {
+    "rho": -0.275775199204894,
+    "n": 821
+  },
+  "medial_min_jsw_vs_kl_grade": {
+    "rho": -0.2087212753142444,
+    "n": 821
+  },
+  "lateral_min_jsw_vs_jsn_lateral": {
+    "rho": -0.2831281547801093,
+    "n": 820
+  },
+  "lateral_min_jsw_vs_kl_grade": {
+    "rho": -0.3308790000478437,
+    "n": 820
+  },
+  "medial_fail_rate": 0.006053268765133172,
+  "lateral_fail_rate": 0.007263922518159807,
+  "pass": false
+}

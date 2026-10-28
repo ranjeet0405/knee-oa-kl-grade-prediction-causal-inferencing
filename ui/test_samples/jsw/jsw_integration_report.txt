@@ -1,0 +1,11 @@
+dataset/test/0/9003175L.png: grade=0 (expected 0, ok=True) | jsw_status=validated rho=-0.30179097240630715 | compartments_match_direct_call=True | http_compartments=[{'failed': False, 'key': 'medial', 'label': 'Medial', 'mean_jsw': 0.061, 'message': None, 'min_jsw': 0.0559}, {'failed': False, 'key': 'lateral', 'label': 'Lateral', 'mean_jsw': 0.079, 'message': None, 'min_jsw': 0.067}]
+
+dataset/test/1/9001400L.png: grade=0 (expected 0, ok=True) | jsw_status=validated rho=-0.30179097240630715 | compartments_match_direct_call=True | http_compartments=[{'failed': False, 'key': 'medial', 'label': 'Medial', 'mean_jsw': 0.0439, 'message': None, 'min_jsw': 0.0309}, {'failed': False, 'key': 'lateral', 'label': 'Lateral', 'mean_jsw': 0.0744, 'message': None, 'min_jsw': 0.0567}]
+
+dataset/test/2/9003316R.png: grade=0 (expected 0, ok=True) | jsw_status=validated rho=-0.30179097240630715 | compartments_match_direct_call=True | http_compartments=[{'failed': False, 'key': 'medial', 'label': 'Medial', 'mean_jsw': 0.0671, 'message': None, 'min_jsw': 0.0565}, {'failed': False, 'key': 'lateral', 'label': 'Lateral', 'mean_jsw': 0.0671, 'message': None, 'min_jsw': 0.0565}]
+
+dataset/test/3/9011053L.png: grade=3 (expected 3, ok=True) | jsw_status=validated rho=-0.30179097240630715 | compartments_match_direct_call=True | http_compartments=[{'failed': False, 'key': 'medial', 'label': 'Medial', 'mean_jsw': 0.0155, 'message': None, 'min_jsw': 0.0054}, {'failed': False, 'key': 'lateral', 'label': 'Lateral', 'mean_jsw': 0.0521, 'message': None, 'min_jsw': 0.0324}]
+
+dataset/test/4/9012867R.png: grade=4 (expected 4, ok=True) | jsw_status=validated rho=-0.30179097240630715 | compartments_match_direct_call=True | http_compartments=[{'failed': False, 'key': 'medial', 'label': 'Medial', 'mean_jsw': 0.0425, 'message': None, 'min_jsw': 0.0103}, {'failed': False, 'key': 'lateral', 'label': 'Lateral', 'mean_jsw': 0.0811, 'message': None, 'min_jsw': 0.0308}]
+
+ALL_OK: True

@@ -70,7 +70,9 @@
           <label for="age">Age (years)<input id="age" type="number" min="1" max="120" placeholder="e.g. 65"></label>
           <label for="bmi">BMI (kg/m&sup2;)<input id="bmi" type="number" min="5" max="80" step=".1" placeholder="e.g. 32.0"></label>
           <label for="family_history">Family history of knee replacement<select id="family_history"><option value="">Not given</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+          <label for="knee_side">Knee side (optional)<select id="knee_side"><option value="">Not given</option><option value="L">Left</option><option value="R">Right</option></select></label>
         </div>
+        <p class="hint">Knee side is only used to label the joint-space-width panel's compartments Medial/Lateral below - it is never fed to the classifier.</p>
         <p class="hint">Age/BMI outside the studied population (45&ndash;79 / 16.9&ndash;48.7) is refused by the causal panel, not extrapolated.</p>
         <div class="demo-row" id="demo-row" role="group" aria-label="Try a sample X-ray">
           <span class="hint" style="align-self:center">Try a sample X-ray:</span>
@@ -154,6 +156,22 @@
           <div id="causal-panel-result"><div class="empty-state">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V5M4 19h16"/></svg>
             <h3>No causal estimate yet</h3><p>Run an assessment first.</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="clinical-grid lower-grid">
+        <div class="card">
+          <div class="section-head">
+            <div><h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4v16M20 4v16M4 10h16M4 14h16"/></svg>
+              Joint space width
+            </h3><p>Image-processing measurement, separate from the KL grade</p></div>
+            <span class="tag muted" id="jsw-status-badge">NOT RUN</span>
+          </div>
+          <div id="jsw-panel"><div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4v16M20 4v16"/></svg>
+            <h3>No measurement yet</h3><p>Run an assessment first.</p>
           </div></div>
         </div>
       </div>

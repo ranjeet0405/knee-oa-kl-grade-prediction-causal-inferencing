@@ -1,0 +1,8 @@
+{
+  "ROW_SMOOTH_SIGMA": 1.5,
+  "COL_SMOOTH_SIGMA": 3.0,
+  "OUTLIER_MAD_K": 2.0,
+  "CENTRAL_SKIP_FRAC": 0.2,
+  "full_val_medial_rho": -0.275775199204894,
+  "full_val_pass": false
+}

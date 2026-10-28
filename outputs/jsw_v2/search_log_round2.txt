@@ -1,0 +1,13 @@
+﻿Validation-only grid search on a 250-image random subsample of val (seed 42).
+  10/48 configs done
+  20/48 configs done
+  30/48 configs done
+  40/48 configs done
+Best config (by medial_min_jsw vs medial JSN rho, most negative):
+{
+  "ROW_SMOOTH_SIGMA": 1.5,
+  "COL_SMOOTH_SIGMA": 3.0,
+  "OUTLIER_MAD_K": 3.0,
+  "CENTRAL_SKIP_FRAC": 0.2,
+  "medial_vs_jsn_rho_on_search_subsample": -0.3109679762822931
+}

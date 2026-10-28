@@ -1,0 +1,7 @@
+{
+  "ROW_SMOOTH_SIGMA": 2.0,
+  "COL_SMOOTH_SIGMA": 2.5,
+  "OUTLIER_MAD_K": 2.5,
+  "CENTRAL_SKIP_FRAC": 0.2,
+  "medial_vs_jsn_rho_on_search_subsample": -0.2946310507146072
+}

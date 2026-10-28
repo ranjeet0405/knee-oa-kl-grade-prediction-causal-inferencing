@@ -1,0 +1,11 @@
+﻿KL0: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL0_9328332L.png (medial_min=0.005434782608695652, lateral_min=0.059782608695652176, failure=False)
+KL0: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL0_9902662L.png (medial_min=0.047872340425531915, lateral_min=0.06914893617021277, failure=False)
+KL1: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL1_9091623R.png (medial_min=0.018633540372670808, lateral_min=0.06832298136645963, failure=False)
+KL1: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL1_9788301R.png (medial_min=0.027932960893854747, lateral_min=0.07262569832402235, failure=False)
+KL2: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL2_9396242L.png (medial_min=0.0625, lateral_min=0.0625, failure=False)
+KL2: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL2_9560292R.png (medial_min=0.02717391304347826, lateral_min=0.07608695652173914, failure=False)
+KL3: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL3_9452835R.png (medial_min=0.016574585635359115, lateral_min=0.03867403314917127, failure=False)
+KL3: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL3_9874238R.png (medial_min=0.005405405405405406, lateral_min=0.05945945945945946, failure=False)
+KL4: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL4_9632586R.png (medial_min=0.004901960784313725, lateral_min=None, failure=True)
+KL4: saved C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples\KL4_9282257R.png (medial_min=0.015789473684210527, lateral_min=0.06842105263157895, failure=False)
+Examples saved to C:\Users\Ranjeet\Desktop\knee_oa_project\outputs\jsw_v2\examples

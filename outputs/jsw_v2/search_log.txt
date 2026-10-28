@@ -1,0 +1,21 @@
+﻿.\venv\Scripts\python.exe : 
+C:\Users\Ranjeet\Desktop\knee_oa_project\venv\Lib\site-packages\albumentations\check_version.py:147: UserWarning: 
+Error fetching version info <urlopen error _ssl.c:993: The handshake operation timed out>
+At line:1 char:349
++ ... a_project"; .\venv\Scripts\python.exe scripts\measure_jsw_v2.py --mod ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Ranjee...tion timed out>:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  data = fetch_version_info()
+Validation-only grid search on a 250-image random subsample of val (seed 42).
+  10/27 configs done
+  20/27 configs done
+Best config (by medial_min_jsw vs medial JSN rho, most negative):
+{
+  "ROW_SMOOTH_SIGMA": 2.0,
+  "COL_SMOOTH_SIGMA": 2.5,
+  "OUTLIER_MAD_K": 2.5,
+  "CENTRAL_SKIP_FRAC": 0.2,
+  "medial_vs_jsn_rho_on_search_subsample": -0.2946310507146072
+}
